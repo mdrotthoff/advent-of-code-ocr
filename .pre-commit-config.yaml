@@ -1,0 +1,39 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c  # frozen: v6.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-case-conflict
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-shebang-scripts-are-executable
+      - id: check-toml
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      - id: forbid-submodules
+      - id: name-tests-test
+      - id: trailing-whitespace
+        args: [
+          --markdown-linebreak-ext=md
+        ]
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: 5ba58aca0bd5bc7c0e1c0fc45af2e88d6a2bde83  # frozen: v0.14.10
+    hooks:
+      - id: ruff-check
+        args:
+          - --fix
+      - id: ruff-format
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 5ccbe86b8ad6bd7c28b6944a7553c075ae833637  # frozen: 0.9.21
+    hooks:
+      - id: uv-lock
+ci:
+  autofix_commit_msg: "style: auto fixes from pre-commit hooks"
+  autofix_prs: true
+  autoupdate_branch: ''
+  autoupdate_commit_msg: "ci(pre-commit): auto-update hooks"
+  autoupdate_schedule: weekly
+  skip: [ ]
+  submodules: false
